@@ -12,7 +12,7 @@ const App = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const handleAnswer = (selectedOption, currentQuestion) => {
-    const isCorrect = selectedOption === questionsData[currentQuestion].correct_answer;
+    const isCorrect = selectedOption === decodeURI(questionsData[currentQuestion].correct_answer);
     setResults((prevResults) => [...prevResults, isCorrect ? 'correct' : 'incorrect']);
     setCurrentQuestion((prev) => prev + 1);
   };
@@ -21,7 +21,6 @@ const App = () => {
     setResults([]);
     setCurrentQuestion(0);
   };
-
   return (
     <Router>
       <div className="container mt-5 text-left" style={{ maxWidth: '800px' }}>
