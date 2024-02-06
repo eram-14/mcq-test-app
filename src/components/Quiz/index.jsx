@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Question from '../Question';
-import './Quiz.css'
 import { useNavigate } from 'react-router-dom';
 
 const Quiz = ({ questions, onAnswer }) => {
@@ -39,7 +38,7 @@ const Quiz = ({ questions, onAnswer }) => {
   };
 
   return (
-    <div>
+    <div className="container my-3">
       {questions && questions[currentQuestion] && (
         <>
           <Question
@@ -52,10 +51,11 @@ const Quiz = ({ questions, onAnswer }) => {
             selectedOption={selectedOption}
             isCorrect={isCorrect}
             isIncorrect={isIncorrect}
+            currentQuestion={currentQuestion + 1}
+            totalQuestions={questions.length}
           />
-          {isCorrect && <p className="feedback">Correct!</p>}
-          {isIncorrect && <p className="feedback">Sorry. Please try again.</p>}
-          <button onClick={handleNext} disabled={!selectedOption}>
+          <p className="text-dark fw-bold">{isIncorrect ? 'Sorry. Please try again.' : 'Correct!'}!</p>
+          <button className="btn btn-dark" onClick={handleNext} disabled={!selectedOption}>
             {isLastQuestion ? 'Show Result' : 'Next Question'}
           </button>
         </>
