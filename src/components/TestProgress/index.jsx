@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 const TestProgress = ({ results, totalQuestions, currentQuestion }) => {
+    const location = useLocation();
+    const showProgressBar = location.pathname !== '/result';
     const answeredQuestions = results.length;
     const correctAnswers = results.filter((result) => result === 'correct').length;
     const incorrectAnswers = results.filter((result) => result === 'incorrect').length;
@@ -11,9 +14,9 @@ const TestProgress = ({ results, totalQuestions, currentQuestion }) => {
     const maxScorePercentage = totalQuestions > 0 ? (maxPossibleScore / totalQuestions) * 100 : 0;
     const attemptsPercentage = (answeredQuestions / totalQuestions) * 100;
 
-    return (
+    return showProgressBar && (
         <div className="test-progress-container">
-             <div className="progress-labels d-flex justify-content-between">
+            <div className="progress-labels d-flex justify-content-between">
                 <p>Score: {Math.round(userPercentage)}%</p>
                 <p>Max Score: {Math.round(maxScorePercentage)}%</p>
             </div>
