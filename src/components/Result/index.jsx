@@ -14,7 +14,14 @@ const Result = ({ results, onRestart }) => {
       <h2>Results</h2>
       <ul className="list-group">
         {results.map((result, index) => (
-          <li key={index} className={`list-group-item ${result === 'correct' ? 'list-group-item-success' : 'list-group-item-danger'}`}>
+          <li
+            key={index}
+            className={`list-group-item ${
+              result === 'correct'
+                ? 'list-group-item-success'
+                : 'list-group-item-danger'
+            }`}
+          >
             Question {index + 1}: {result === 'correct' ? 'Correct' : 'Incorrect'}
           </li>
         ))}

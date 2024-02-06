@@ -5,6 +5,7 @@ import Quiz from './components/Quiz';
 import Result from './components/Result';
 import ProgressBar from './components/ProgressBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 const App = () => {
   const [results, setResults] = useState([]);
@@ -23,7 +24,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className="container mt-5 text-center">
+      <div className="container mt-5 text-left" style={{ maxWidth: '800px' }}>
         <ProgressBar totalQuestions={questionsData.length} currentQuestion={currentQuestion} />
         <Routes>
           <Route

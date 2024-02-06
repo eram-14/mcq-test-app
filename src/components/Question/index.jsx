@@ -1,14 +1,30 @@
 import React from 'react';
 
-const Question = ({ question, options, onSelect, selectedOption, isCorrect, isIncorrect, currentQuestion, totalQuestions }) => {
+const Question = ({ question, options, onSelect, selectedOption, isCorrect, isIncorrect, currentQuestion, totalQuestions, difficulty }) => {
   const decodedQuestion = decodeURIComponent(question);
   const decodedOptions = options.map((option) => decodeURIComponent(option));
+
+  const getDifficultyRating = () => {
+    switch (difficulty) {
+      case 'easy':
+        return '★☆☆';
+      case 'medium':
+        return '★★☆';
+      case 'hard':
+        return '★★★';
+      default:
+        return '';
+    }
+  };
 
   return (
     <div className="question-container">
       <div className="question-info mb-3">
         <p>
           Question {currentQuestion} of {totalQuestions}
+        </p>
+        <p>
+          {getDifficultyRating()}
         </p>
       </div>
       <h3>{decodedQuestion}</h3>

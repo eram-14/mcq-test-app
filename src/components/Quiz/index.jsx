@@ -53,11 +53,15 @@ const Quiz = ({ questions, onAnswer }) => {
             isIncorrect={isIncorrect}
             currentQuestion={currentQuestion + 1}
             totalQuestions={questions.length}
+            difficulty={questions[currentQuestion].difficulty}
           />
-          <p className="text-dark fw-bold">{isIncorrect ? 'Sorry. Please try again.' : 'Correct!'}!</p>
-          <button className="btn btn-dark" onClick={handleNext} disabled={!selectedOption}>
-            {isLastQuestion ? 'Show Result' : 'Next Question'}
-          </button>
+          {isIncorrect && <p className="text-dark fw-bold text-center">Sorry. Please try again.</p>}
+          {isCorrect && <p className="text-dark fw-bold text-center">Correct!</p>}
+          <div className="text-center">
+            <button className="btn btn-dark" onClick={handleNext} disabled={!selectedOption}>
+              {isLastQuestion ? 'Show Result' : 'Next Question'}
+            </button>
+          </div>
         </>
       )}
     </div>
