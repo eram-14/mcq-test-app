@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Question = ({ question, options, onSelect, selectedOption, isCorrect, isIncorrect, currentQuestion, totalQuestions, difficulty }) => {
+const Question = ({ question, options, onSelect, selectedOption, currentQuestion, totalQuestions, difficulty }) => {
   const decodedQuestion = decodeURIComponent(question);
   const decodedOptions = options.map((option) => decodeURIComponent(option));
 
@@ -20,14 +20,14 @@ const Question = ({ question, options, onSelect, selectedOption, isCorrect, isIn
   return (
     <div className="question-container">
       <div className="question-info mb-3">
-        <p>
+        <h5>
           Question {currentQuestion} of {totalQuestions}
-        </p>
+        </h5>
         <p>
           {getDifficultyRating()}
         </p>
       </div>
-      <h3>{decodedQuestion}</h3>
+      <h4>{decodedQuestion}</h4>
       <div className="row">
         {decodedOptions.map((option, index) => (
           <div
@@ -38,7 +38,7 @@ const Question = ({ question, options, onSelect, selectedOption, isCorrect, isIn
             <div
               className={`card ${selectedOption === option ? 'bg-dark text-white' : 'bg-light'}`}
             >
-              <div className="card-body">
+              <div className="card-body" style={{cursor:'pointer'}}>
                 <p className="card-text">{option}</p>
               </div>
             </div>

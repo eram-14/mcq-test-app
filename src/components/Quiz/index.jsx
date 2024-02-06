@@ -57,7 +57,7 @@ const Quiz = ({ questions, onAnswer }) => {
           />
           {isIncorrect && <p className="text-dark fw-bold text-center">Sorry. Please try again.</p>}
           {isCorrect && <p className="text-dark fw-bold text-center">Correct!</p>}
-          <div className="text-center">
+          <div className="text-center mb-5 mt-4">
             <button className="btn btn-dark" onClick={handleNext} disabled={!selectedOption}>
               {isLastQuestion ? 'Show Result' : 'Next Question'}
             </button>
