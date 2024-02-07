@@ -26,9 +26,8 @@ const Quiz = ({ questions, onAnswer }) => {
   };
 
   const handleNext = () => {
-    if (questions && questions[currentQuestion]) {
-      onAnswer(selectedOption, currentQuestion);
-
+    if (questions[currentQuestion]) {
+      onAnswer(selectedOption);
       if (isLastQuestion) {
         navigate('/result');
       } else {
@@ -39,7 +38,7 @@ const Quiz = ({ questions, onAnswer }) => {
 
   return (
     <div className="container my-3">
-      {questions && questions[currentQuestion] && (
+      {questions[currentQuestion] && (
         <>
           <Question
             question={questions[currentQuestion].question}

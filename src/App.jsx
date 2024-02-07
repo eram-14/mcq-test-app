@@ -4,7 +4,7 @@ import { questionsData } from './data/questionsData';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
 import ProgressBar from './components/ProgressBar';
-import TestProgress from './components/TestProgress'; 
+import TestProgress from './components/TestProgress';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -12,7 +12,7 @@ const App = () => {
   const [results, setResults] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
-  const handleAnswer = (selectedOption, currentQuestion) => {
+  const handleAnswer = (selectedOption) => {
     const isCorrect = selectedOption === decodeURI(questionsData[currentQuestion].correct_answer);
     setResults((prevResults) => [...prevResults, isCorrect ? 'correct' : 'incorrect']);
     setCurrentQuestion((prev) => prev + 1);
@@ -29,10 +29,7 @@ const App = () => {
         <ProgressBar totalQuestions={questionsData.length} currentQuestion={currentQuestion} />
 
         <Routes>
-          <Route
-            path="/"
-            element={<Quiz questions={questionsData} onAnswer={handleAnswer} />}
-          />
+          <Route path="/" element={<Quiz questions={questionsData} onAnswer={handleAnswer} />} />
           <Route path="/result" element={<Result results={results} onRestart={handleRestart} />} />
         </Routes>
         <TestProgress

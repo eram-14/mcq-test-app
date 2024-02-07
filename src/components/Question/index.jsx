@@ -38,7 +38,7 @@ const Question = ({ question, options, onSelect, selectedOption, currentQuestion
             <div
               className={`card ${selectedOption === option ? 'bg-dark text-white' : 'bg-light'}`}
             >
-              <div className="card-body" style={{cursor:'pointer'}}>
+              <div className="card-body" style={{ cursor: 'pointer' }}>
                 <p className="card-text">{option}</p>
               </div>
             </div>
